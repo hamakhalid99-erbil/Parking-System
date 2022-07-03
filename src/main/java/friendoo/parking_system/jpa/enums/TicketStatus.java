@@ -1,11 +1,11 @@
 package friendoo.parking_system.jpa.enums;
 
 
-    public enum TicketStatus {
+public enum TicketStatus {
 
-        PAID,
-        NOT_PAID,
-        UNKNOWN
+    PAID,
+    NOT_PAID,
+    UNKNOWN
 
-    }
+}
 

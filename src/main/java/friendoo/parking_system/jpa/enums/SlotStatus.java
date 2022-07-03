@@ -5,4 +5,7 @@ public enum SlotStatus {
     Empty,
     Unknown;
 
+    public boolean isEmpty() {
+        return this == Empty;
+    }
 }
