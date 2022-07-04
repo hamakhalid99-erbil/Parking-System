@@ -29,6 +29,8 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
     implementation 'com.iamceph.resulter:resulter-core:1.1.8'
     implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.0.0-rc4'
+    implementation 'org.springframework.boot:spring-boot-starter-security:2.7.1'
+
 
 
 }

@@ -1,0 +1,30 @@
+role:
+  customer:
+    role: "customer"
+    username: "customer"
+    password: "hama"
+    url: "/api/v1/cs/**"
+
+  ticket:
+    role: "ticket"
+    username: "ticket"
+    password: "hama"
+    url: "/api/v1/tk/**"
+
+  floor:
+    role: "floor"
+    username: "floor"
+    url: "/api/v1/fl/**"
+    password: "hama"
+
+  slot:
+    role: "slot"
+    username: "slot"
+    url: "/api/v1/sl/**"
+    password: "hama"
+
+  report:
+    role: "report"
+    username: "report"
+    url: "/api/v1/rp/**"
+    password: "hama"
