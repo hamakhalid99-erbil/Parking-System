@@ -28,6 +28,9 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     implementation 'com.iamceph.resulter:resulter-core:1.1.8'
+    implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.0.0-rc4'
+
+
 }
 
 tasks.named('test') {

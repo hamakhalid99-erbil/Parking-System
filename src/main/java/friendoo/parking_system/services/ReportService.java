@@ -20,7 +20,7 @@ public class ReportService {
     private final ReportRepository reportRepository;
     private final TicketService ticketService;
 
-    public DataResultable<TicketResponse> calculateReportForDate(LocalDate forDate) {
+    public DataResultable<TicketResponse> getReportForDate(LocalDate forDate) {
 
         DataResultable<List<Ticket>> paidTicketForDate = ticketService.findPaidTicketForDate(forDate);
         DataResultable<List<Ticket>> unpaidTicketsForDate = ticketService.findUnpaidTicketsForDate(forDate);

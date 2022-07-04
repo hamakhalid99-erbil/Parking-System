@@ -41,7 +41,7 @@ public class TicketService {
     }
 
     public DataResultable<List<Ticket>> findPaidTicketForDate(LocalDate forDate) {
-        List<Ticket> tickets = ticketRepository.findTicketByStatusAndTime(forDate);
+        List<Ticket> tickets = ticketRepository.findTicketByStatusAndTime(TicketStatus.PAID.ordinal(),forDate);
         if (tickets.isEmpty()) {
             log.error("No paid ticket found for date {}", forDate);
             return DataResultable.fail("No paid ticket found");
