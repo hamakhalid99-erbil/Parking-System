@@ -1,0 +1,4 @@
+calculation:
+  perMinute: 1
+  perHour: 25
+  perDay: 200
