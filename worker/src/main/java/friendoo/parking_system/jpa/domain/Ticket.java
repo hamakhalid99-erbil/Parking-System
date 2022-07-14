@@ -27,8 +27,4 @@ public class Ticket {
     private LocalDateTime createdTime;
     @Column(name = "ticket_status", nullable = false)
     private TicketStatus status;
-
-    public Ticket asResponseModel() {
-
-    }
 }
