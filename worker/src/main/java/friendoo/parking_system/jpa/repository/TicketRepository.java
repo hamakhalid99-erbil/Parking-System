@@ -15,6 +15,4 @@ public interface TicketRepository extends JpaRepository<Ticket,String> {
 
     @Query(value = "select p from Ticket p where p.createdTime =:date and p.status =:status")
     List<Ticket> findTicketByStatusAndTime(Integer status,LocalDate date);
-
-
 }

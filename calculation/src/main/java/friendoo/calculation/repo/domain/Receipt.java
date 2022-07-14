@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
 @Table
 @Builder
 public class Receipt {
-
     @Id
     @Column(name = "uuid")
     private String uuid;
@@ -26,6 +25,4 @@ public class Receipt {
     private String description;
     @Column(name = "created_time", nullable = false)
     private LocalDateTime createdTime;
-
-
 }

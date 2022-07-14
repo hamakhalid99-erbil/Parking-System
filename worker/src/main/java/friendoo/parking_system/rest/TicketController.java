@@ -30,7 +30,7 @@ public class TicketController {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     @GetMapping(path = "/ticket/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @Operation(description = "Find Tickets By id")
+    @Operation(summary = "Find Tickets By id")
     public ResponseEntity<Ticket> findById(@PathVariable String id) {
         DataResultable<Ticket> byId = ticketService.findById(id);
         if (byId.isFail()) {

@@ -14,7 +14,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Slot {
     @Id
-    // TODO: 6/15/2022 remove uuid and set slot number and floor combined as primary key
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Slot_Number", nullable = false)
     private Integer slotNumber;

@@ -1,6 +1,7 @@
 dependencies {
-
-
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.9'
+    compileOnly 'org.springframework.boot:spring-boot-starter-webflux'
 }
 
 

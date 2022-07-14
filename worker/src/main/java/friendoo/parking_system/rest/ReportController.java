@@ -18,16 +18,14 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @RestController
-@RequiredArgsConstructor(onConstructor_ = @Autowired)
 @Slf4j
 @RequestMapping(name = "Report Controller", path = "api/v1/rp")
-public class ReportController {
-    private final ReportService reportService;
-    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+public record ReportController(ReportService reportService) {
 
     @GetMapping(path = "/report/{forDate}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @Operation(description = "Getting a Report for a specific date, date format should be (dd-MM-yyyy)")
+    @Operation(summary = "Getting a Report for a specific date, date format should be (dd-MM-yyyy)")
     public ResponseEntity<TicketResponse> getReportForDate(@PathVariable(name = "forDate") String forDate) {
+        final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         DataResultable<TicketResponse> ticketResponseReport = reportService.getReportForDate(LocalDate.parse(forDate, dateTimeFormatter));
         if (ticketResponseReport.isFail()) {
             log.error("The Report not found for the date {}", forDate);

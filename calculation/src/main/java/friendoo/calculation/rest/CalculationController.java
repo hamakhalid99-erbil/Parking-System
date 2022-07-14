@@ -15,16 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequiredArgsConstructor(onConstructor_ = @Autowired)
 @RequestMapping(name = "Calculation Controller", path = "calculation")
-@Slf4j
-public class CalculationController {
-    private final CalculationService service;
-
+public record CalculationController(CalculationService service) {
     @PostMapping(
             path = "calculation",
             produces = MediaType.APPLICATION_JSON_VALUE,
-            consumes = MediaType.APPLICATION_JSON_VALUE)
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
     public ResponseEntity<Receipt> calculateTicket(@RequestBody TicketRequest ticketRequest) {
         DataResultable<Receipt> maybeReceipt = service.calculateTicket(ticketRequest);
         if (maybeReceipt.isFail()) {

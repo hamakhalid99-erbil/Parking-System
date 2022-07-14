@@ -13,15 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequiredArgsConstructor(onConstructor_ = @Autowired)
 @Slf4j
 @RestController
 @RequestMapping(name = "Slot Controller", path = "api/v1/sl")
-public class SlotController {
-    private final SlotService slotsService;
-
+public record SlotController (SlotService slotsService) {
     @GetMapping(path = "/slot", produces = MediaType.APPLICATION_JSON_VALUE)
-    @Operation(description = "Finding empty Slot")
+    @Operation(summary = "Finding empty Slot")
     public ResponseEntity<Slot> findEmptySlot() {
         DataResultable<Slot> emptySlot = slotsService.findEmptySlot();
         if (emptySlot.isFail()) {

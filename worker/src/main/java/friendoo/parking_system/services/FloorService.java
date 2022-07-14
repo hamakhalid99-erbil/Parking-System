@@ -13,10 +13,7 @@ import java.util.List;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor(onConstructor_ = @Autowired)
-public class FloorService {
-    private final FloorRepository floorRepository;
-
+public record FloorService(FloorRepository floorRepository) {
     public DataResultable<List<Floor>> findFloors() {
         List<Floor> floors = floorRepository.findAll();
         if (floors.isEmpty()) {

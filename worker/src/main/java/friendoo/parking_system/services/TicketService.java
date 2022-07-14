@@ -56,7 +56,7 @@ public class TicketService {
         }
         List<Ticket> toList = ticketsForDate.data()
                 .stream()
-                .filter(ticket -> ticket.getStatus().equals(TicketStatus.NOT_PAID))
+                .filter(ticket -> ticket.getStatus().isNotPaid())
                 .toList();
         if (toList.isEmpty()) {
             log.warn("No unpaid tickets for date {} ", forDate);

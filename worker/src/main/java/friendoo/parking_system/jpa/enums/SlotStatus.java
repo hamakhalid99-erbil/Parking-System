@@ -8,4 +8,8 @@ public enum SlotStatus {
     public boolean isEmpty() {
         return this == Empty;
     }
+
+    public boolean isFull() {
+        return !isEmpty();
+    }
 }

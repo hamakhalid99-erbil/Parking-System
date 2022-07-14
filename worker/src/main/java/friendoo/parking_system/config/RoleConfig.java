@@ -36,8 +36,4 @@ public class RoleConfig {
     public Role ReportRole() {
         return new Role();
     }
-
-
-
-
 }

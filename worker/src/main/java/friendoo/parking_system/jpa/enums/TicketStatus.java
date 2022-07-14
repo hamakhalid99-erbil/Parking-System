@@ -5,7 +5,16 @@ public enum TicketStatus {
 
     PAID,
     NOT_PAID,
-    UNKNOWN
+    UNKNOWN;
+
+    public boolean isPaid() {
+        return this == PAID;
+    }
+
+    public boolean isNotPaid() {
+        return !isPaid();
+    }
+
 
 }
 

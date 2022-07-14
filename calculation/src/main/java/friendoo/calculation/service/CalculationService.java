@@ -7,6 +7,7 @@ import friendoo.calculation.repo.ReceiptRepository;
 import friendoo.calculation.repo.domain.Receipt;
 import friendoo.calculation.utils.TimeConverter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,21 +17,20 @@ import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor(onConstructor_ = @Autowired)
-public class CalculationService {
-    private final ReceiptRepository receiptRepository;
-    private final CalculationProperties calculationProperties;
-
-
+@Slf4j
+public record CalculationService(ReceiptRepository receiptRepository,
+                                 CalculationProperties calculationProperties) {
     public DataResultable<Receipt> calculateTicket(final TicketRequest ticketRequest) {
 
         var id = ticketRequest.getUuid();
         if (id.isEmpty()) {
+            log.error("no ticket found for id [{}]", ticketRequest.getUuid());
             return DataResultable.fail("No ticket Id provided");
         }
         Optional<Receipt> byId = receiptRepository.findById(id);
 
         if (byId.isPresent()) {
+            log.warn("receipt was already present, terminating calculation");
             return DataResultable.fromOptional(byId);
         }
         var createdTime = ticketRequest.getCreatedTime();
@@ -61,9 +61,8 @@ public class CalculationService {
                 .totalAmount(totalAmount)
                 .build();
         receiptRepository.save(receipt);
+        log.trace("successfully calculated ticket, returning [{}]", receipt);
         return DataResultable.ok(receipt);
-
-
     }
 
 }
