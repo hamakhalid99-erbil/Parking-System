@@ -28,5 +28,7 @@ public class Ticket {
     @Column(name = "ticket_status", nullable = false)
     private TicketStatus status;
 
+    public Ticket asResponseModel() {
 
+    }
 }

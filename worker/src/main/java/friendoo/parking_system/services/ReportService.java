@@ -2,11 +2,8 @@ package friendoo.parking_system.services;
 
 import com.iamceph.resulter.core.DataResultable;
 import friendoo.parking_system.jpa.domain.Ticket;
-import friendoo.parking_system.jpa.repository.ReportRepository;
 import friendoo.parking_system.models.TicketResponse;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -15,11 +12,7 @@ import java.util.List;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor(onConstructor_ = @Autowired)
-public class ReportService {
-    private final ReportRepository reportRepository;
-    private final TicketService ticketService;
-
+public record ReportService(TicketService ticketService) {
     public DataResultable<TicketResponse> getReportForDate(LocalDate forDate) {
 
         DataResultable<List<Ticket>> paidTicketForDate = ticketService.findPaidTicketForDate(forDate);

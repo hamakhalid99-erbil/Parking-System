@@ -2,6 +2,7 @@ package friendoo.parking_system.services;
 
 import friendoo.parking_system.models.ReceiptResponse;
 import friendoo.parking_system.models.TicketRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -10,6 +11,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 @Service
+@Slf4j
 public class CalculationService {
     @Value("${calculation.url}")
     private String calculationUrl;
@@ -25,7 +27,7 @@ public class CalculationService {
                 .retrieve()
                 .bodyToMono(responseType)
                 .onErrorResume(throwable -> {
-                    System.out.println("throwable = " + throwable);
+                    log.error("error sending request to {}, message {}", url, throwable.getMessage());
                     return Mono.error(throwable);
                 });
 
